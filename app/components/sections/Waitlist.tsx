@@ -1,17 +1,33 @@
 "use client";
 import { useState } from "react";
+import { supabase } from "@/lib/supabase";
+console.log("URL:", process.env.NEXT_PUBLIC_SUPABASE_URL);
+console.log("KEY:", process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY);
 
 export default function Waitlist() {
   const [email, setEmail] = useState("");
   const [suburb, setSuburb] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const [success, setSuccess] = useState(false);
+  
 
-  function handleSubmit() {
-    if (!email.includes("@") || !suburb.trim()) return;
-    setSubmitted(true);
+  const handleSubmit = async () => {
+  if (!email || !suburb) return;
+
+  const { error } = await supabase
+    .from("waitlist")
+    .insert([{ email, suburb }]);
+
+  if (!error) {
+    setSuccess(true);
     setEmail("");
     setSuburb("");
+  } else {
+    console.error("Supabase error:", error);
+    alert(error?.message);
+    
   }
+};
 
   return (
     <section
@@ -59,15 +75,16 @@ export default function Waitlist() {
           />
 
           <button
-            onClick={handleSubmit}
-            className={`w-full p-3 rounded font-medium transition ${
-              submitted
-                ? "bg-[#A3B18A] text-[#344E41]"
-                : "bg-[#A3B18A] text-[#344E41] hover:opacity-90"
-            }`}
-          >
-            {submitted ? "You're on the list" : "Request Access"}
-          </button>
+  onClick={handleSubmit}
+  disabled={success}
+  className={`px-6 py-3 rounded-full transition ${
+    success
+      ? "bg-[#A3B18A] text-white cursor-not-allowed"
+      : "bg-[#344E41] text-white hover:bg-[#2c4036]"
+  }`}
+>
+  {success ? "Joined" : "Request Access"}
+</button>
 
         </div>
 
