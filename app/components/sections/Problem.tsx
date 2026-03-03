@@ -19,14 +19,14 @@ export default function Problem() {
   ];
 
   return (
-    <section className="py-28 bg-[#1A2B22] text-white px-6">
+    <section className="py-24 bg-[#1A2B22] text-white px-6">
       <div className="max-w-6xl mx-auto">
 
         <p className="text-xs tracking-widest uppercase text-[#A3B18A] mb-4">
           The Problem
         </p>
 
-        <h2 className="text-4xl font-serif mb-8">
+        <h2 className="text-4xl md:text-5xl font-serif mb-12">
           Every option is broken.
         </h2>
 

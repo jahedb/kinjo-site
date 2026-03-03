@@ -3,6 +3,7 @@ import Problem from "./components/sections/Problem";
 import Features from "./components/sections/Features";
 import Trust from "./components/sections/Trust";
 import Founding from "./components/sections/Founding";
+import Waitlist from "./components/sections/Waitlist";
 
 export default function Home() {
   return (
@@ -12,6 +13,7 @@ export default function Home() {
       <Features />
       <Trust />
       <Founding />
+      <Waitlist />
     </>
   );
 }

@@ -1,6 +1,8 @@
 export default function Trust() {
   return (
-    <section className="py-28 bg-white px-6">
+    <section 
+      id="trust"
+      className="py-24 bg-white border-t border-[#A3B18A]/20 px-6">
       <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
 
         <div>
@@ -8,7 +10,7 @@ export default function Trust() {
             Trust is the product
           </p>
 
-          <h2 className="text-4xl font-serif text-[#344E41] mb-6">
+          <h2 className="text-4xl md:text-5xl font-serif text-[#344E41] mb-6">
             Know who you’re dealing with.
           </h2>
 
