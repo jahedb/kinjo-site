@@ -10,7 +10,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://kinjo.cloud"),
+  metadataBase: new URL("https://kinjo.co.za"),
 
   title: {
     default: "Kinjo",
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     title: "Kinjo",
     description:
       "A private community app for your neighbourhood.",
-    url: "https://kinjo.cloud",
+    url: "https://kinjo.cp.za",
     siteName: "Kinjo",
     images: [
       {
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
   },
 
   alternates: {
-    canonical: "https://kinjo.cloud",
+    canonical: "https://kinjo.cp.za",
   },
 };
 
