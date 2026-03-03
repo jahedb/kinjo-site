@@ -44,21 +44,17 @@ export default function Nav() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
-        scrolled
-          ? "bg-white/80 backdrop-blur-md border-b border-[#A3B18A]/20"
-          : "bg-transparent"
-      }`}
+      className={`fixed top-0 w-full z-50 bg-white/95 backdrop-blur-md border-b border-[#E5E7EB] transition-all`}
     >
       <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
         
         {/* Logo */}
         <Link href="/" onClick={closeMenu}>
           <img
-            src={scrolled ? "/logo.svg" : "/logo-white.svg"}
+            src={scrolled ? "/logo.svg" : "/logo.svg"}
             alt="Kinjo"
-            className="h-7 w-auto"
-          />
+            className="h-10 md:h-12 w-auto"
+        />
         </Link>
 
         {/* Desktop Links */}

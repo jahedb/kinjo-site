@@ -4,16 +4,29 @@ import "./globals.css";
 import Footer from "./components/layout/Footer";
 import Nav from "./components/layout/Nav";
 import type { Metadata } from "next";
+import { Inter } from "next/font/google";
+
+const inter = Inter({
+  subsets: ["latin"],
+  weight: ["300", "400", "500"],
+});
 
 export const metadata: Metadata = {
-  title: "Kinjo — Your Suburb. Not the Internet.",
+  metadataBase: new URL("https://kinjo-site.vercel.app"), // change to your real domain
+
+  title: {
+    default: "Kinjo",
+    template: "%s | Kinjo",
+  },
+
   description:
-    "Kinjo is an invite-only neighbourhood community platform for South Africa. Private, trusted, suburb-based.",
+    "Kinjo is a private neighbourhood app connecting verified residents within the same suburb.",
+
   openGraph: {
-    title: "Kinjo — Your Suburb. Not the Internet.",
+    title: "Kinjo",
     description:
-      "Private, invite-only neighbourhood platform for real communities.",
-    url: "https://kinjo.co.za",
+      "A private community app for your neighbourhood.",
+    url: "https://kinjo-site.vercel.app",
     siteName: "Kinjo",
     images: [
       {
@@ -22,8 +35,15 @@ export const metadata: Metadata = {
         height: 630,
       },
     ],
-    locale: "en_ZA",
     type: "website",
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    title: "Kinjo",
+    description:
+      "A private community app for your neighbourhood.",
+    images: ["/og-image.png"],
   },
 };
 const geistSans = Geist({
@@ -43,9 +63,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className={inter.className}>
+      
         <Nav />
         {children}
 	<Footer />
