@@ -1,8 +1,9 @@
 export default function Trust() {
   return (
-    <section 
+    <section
       id="trust"
-      className="py-24 bg-white border-t border-[#A3B18A]/20 px-6">
+      className="scroll-mt-24 py-24 bg-white border-t border-[#A3B18A]/20 px-6"
+>
       <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
 
         <div>

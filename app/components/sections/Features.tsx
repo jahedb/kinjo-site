@@ -9,9 +9,10 @@ export default function Features() {
   ];
 
   return (
-    <section 
+    <section
       id="features"
-      className="py-24 bg-[#F0F4EC] border-t border-[#A3B18A]/20 px-6">
+      className="scroll-mt-24 py-24 bg-[#F0F4EC] border-t border-[#A3B18A]/20 px-6"
+>
       <div className="max-w-6xl mx-auto">
 
         <p className="text-xs tracking-widest uppercase text-[#A3B18A] mb-4">

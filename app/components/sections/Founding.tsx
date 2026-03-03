@@ -16,7 +16,10 @@ export default function Founding() {
   }
 
   return (
-    <section className="py-28 bg-[#F0F4EC] px-6">
+    <section
+      id="founding"
+      className="scroll-mt-24 py-28 bg-[#F0F4EC] px-6"
+    >
       <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-16 items-start">
 
         {/* Copy Side */}

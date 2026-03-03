@@ -14,8 +14,11 @@ export default function Waitlist() {
   }
 
   return (
-    <section className="py-28 bg-[#1A2B22] text-white px-6 text-center">
-      <div className="max-w-xl mx-auto">
+    <section
+      id="waitlist"
+      className="scroll-mt-24 py-28 bg-[#1A2B22] text-white px-6 text-center"
+    >
+    <div className="max-w-xl mx-auto">
 
         <h2 className="text-4xl font-serif mb-6">
           Bring Kinjo to your street.
