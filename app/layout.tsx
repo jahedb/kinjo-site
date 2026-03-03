@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
 import Footer from "./components/layout/Footer";
 import Nav from "./components/layout/Nav";
-import { Inter } from "next/font/google";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -11,7 +10,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://kinjo-site.vercel.app"), // change to your real domain
+  metadataBase: new URL("https://kinjo.cloud"),
 
   title: {
     default: "Kinjo",
@@ -25,7 +24,7 @@ export const metadata: Metadata = {
     title: "Kinjo",
     description:
       "A private community app for your neighbourhood.",
-    url: "https://kinjo-site.vercel.app",
+    url: "https://kinjo.cloud",
     siteName: "Kinjo",
     images: [
       {
@@ -44,29 +43,23 @@ export const metadata: Metadata = {
       "A private community app for your neighbourhood.",
     images: ["/og-image.png"],
   },
-};
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+  alternates: {
+    canonical: "https://kinjo.cloud",
+  },
+};
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="en">
       <body className={inter.className}>
-      
         <Nav />
         {children}
-	<Footer />
+        <Footer />
       </body>
     </html>
   );

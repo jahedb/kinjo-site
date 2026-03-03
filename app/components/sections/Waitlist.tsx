@@ -19,6 +19,12 @@ export default function Waitlist() {
     .insert([{ email, suburb }]);
 
   if (!error) {
+    await fetch("/api/send-confirmation", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email, suburb }),
+    });
+    
     setSuccess(true);
     setEmail("");
     setSuburb("");
