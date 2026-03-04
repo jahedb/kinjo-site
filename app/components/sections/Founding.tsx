@@ -24,17 +24,12 @@ const data = await res.json();
 setClaimedCount(data.count);
 }
 
-```
 fetchCount();
-```
-
 }, []);
 
 // Animate number count
 useEffect(() => {
 if (claimedCount === null) return;
-
-```
 let start = 0;
 const duration = 800;
 const increment = claimedCount / (duration / 16);
@@ -51,7 +46,6 @@ const timer = setInterval(() => {
 }, 16);
 
 return () => clearInterval(timer);
-```
 
 }, [claimedCount]);
 
@@ -59,7 +53,6 @@ const handleSubmit = async () => {
 const valid = Object.values(form).every((v) => v.trim());
 if (!valid || loading) return;
 
-```
 try {
   setLoading(true);
 
@@ -92,13 +85,12 @@ try {
 } finally {
   setLoading(false);
 }
-```
+
 
 };
 
 return ( <section id="founding" className="scroll-mt-24 py-32 bg-[#F0F4EC] px-6"> <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-20 items-start">
 
-```
     {/* LEFT COLUMN */}
     <div>
 
@@ -282,7 +274,6 @@ return ( <section id="founding" className="scroll-mt-24 py-32 bg-[#F0F4EC] px-6"
 
   </div>
 </section>
-```
 
 );
 }
