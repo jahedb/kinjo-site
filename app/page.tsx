@@ -7,6 +7,7 @@ import Founding from "./components/sections/Founding";
 import Waitlist from "./components/sections/Waitlist";
 import Communities from "./components/sections/Communities";
 import Roadmap from "./components/sections/Roadmap";
+import SuburbLeaderboard from "./components/sections/SuburbLeaderboard";
 
 export default function Home() {
   return (
@@ -17,6 +18,7 @@ export default function Home() {
       <Features />
       <Communities />
       <Trust />
+      <SuburbLeaderboard />
       <Founding />
       <Roadmap />
       <Waitlist />
