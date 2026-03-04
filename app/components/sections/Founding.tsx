@@ -1,19 +1,44 @@
 "use client";
+
 import { useState } from "react";
 
 export default function Founding() {
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+
   const [form, setForm] = useState({
     name: "",
     email: "",
     suburb: "",
   });
 
-  function handleSubmit() {
-    const valid = Object.values(form).every(v => v.trim());
-    if (!valid) return;
-    setSubmitted(true);
-  }
+  const handleSubmit = async () => {
+    const valid = Object.values(form).every((v) => v.trim());
+    if (!valid || loading || submitted) return;
+
+    try {
+      setLoading(true);
+
+      const res = await fetch("/api/founding-member", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(form),
+      });
+
+      if (!res.ok) {
+        throw new Error("Request failed");
+      }
+
+      setSubmitted(true);
+    } catch (err) {
+      console.error("Submission failed:", err);
+      alert("Something went wrong. Please try again.");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <section
@@ -33,7 +58,8 @@ export default function Founding() {
           </h2>
 
           <p className="text-gray-600 mb-4">
-            Become a founding member and help shape the first trusted neighbourhood platform in your area.
+            Become a founding member and help shape the first trusted
+            neighbourhood platform in your area.
           </p>
 
           <ul className="text-gray-600 space-y-2 text-sm">
@@ -50,36 +76,55 @@ export default function Founding() {
             placeholder="Full Name"
             disabled={submitted}
             value={form.name}
-            onChange={(e) => setForm({ ...form, name: e.target.value })}
-            className="w-full border p-3 rounded"
+            onChange={(e) =>
+              setForm({ ...form, name: e.target.value })
+            }
+            className="w-full border border-gray-300 p-3 rounded"
           />
 
           <input
             placeholder="Email"
             disabled={submitted}
             value={form.email}
-            onChange={(e) => setForm({ ...form, email: e.target.value })}
-            className="w-full border p-3 rounded"
+            onChange={(e) =>
+              setForm({ ...form, email: e.target.value })
+            }
+            className="w-full border border-gray-300 p-3 rounded"
           />
 
           <input
             placeholder="Suburb"
             disabled={submitted}
             value={form.suburb}
-            onChange={(e) => setForm({ ...form, suburb: e.target.value })}
-            className="w-full border p-3 rounded"
+            onChange={(e) =>
+              setForm({ ...form, suburb: e.target.value })
+            }
+            className="w-full border border-gray-300 p-3 rounded"
           />
 
           <button
             onClick={handleSubmit}
+            disabled={loading || submitted}
             className={`w-full p-3 rounded text-white transition ${
               submitted
-                ? "bg-[#A3B18A] text-[#344E41]"
-                : "bg-[#344E41]"
+                ? "bg-[#A3B18A] text-[#344E41] cursor-default"
+                : loading
+                ? "bg-gray-400 cursor-wait"
+                : "bg-[#344E41] hover:bg-[#2f4438]"
             }`}
           >
-            {submitted ? "Application received" : "Apply as Founding Member"}
+            {submitted
+              ? "Application received"
+              : loading
+              ? "Sending..."
+              : "Apply as Founding Member"}
           </button>
+
+          {submitted && (
+            <p className="text-sm text-green-700 mt-2">
+              Thank you. We'll review your request and contact you soon.
+            </p>
+          )}
 
         </div>
 
