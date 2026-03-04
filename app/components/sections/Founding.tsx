@@ -3,6 +3,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { MapPin, Users } from "lucide-react";
 
 export default function Founding() {
   const [loading, setLoading] = useState(false);
@@ -69,36 +70,45 @@ export default function Founding() {
       <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-16 items-start">
 
         {/* Copy */}
-        <div>
-          <p className="text-xs tracking-widest uppercase text-[#A3B18A] mb-4">
-            Founding Member
-          </p>
+        <p className="text-xs tracking-widest uppercase text-[#A3B18A] mb-4">
+          Founding Member
+        </p>
 
-          <h2 className="text-4xl font-serif text-[#344E41] mb-6">
-            Claim Kinjo for your suburb
-          </h2>
+        <h2 className="text-4xl font-serif text-[#344E41] mb-6">
+         Claim Kinjo for your suburb
+        </h2>
 
-          <p className="text-sm text-[#344E41] mb-4">
-            Only one founding member is selected per suburb.
-          </p>
+        <p className="text-sm text-[#344E41] mb-6">
+          Only one founding member is selected per suburb.
+        </p>
 
-          {claimedCount !== null && (
-          <p className="text-xs text-[#A3B18A] mb-4">
-          ⚡ {claimedCount} suburbs already claimed
-          </p>
-      )}
+      {claimedCount !== null && (
+      <div className="grid grid-cols-2 gap-4 mb-6">
 
-          <p className="text-gray-600 mb-4">
-            Become a founding member and help shape the first trusted
-            neighbourhood platform in your area.
-          </p>
+    {/* Suburbs Claimed */}
+    <div className="bg-white border border-[#D4E2C8] rounded-xl p-4 shadow-sm flex items-center gap-3">
+      <MapPin className="text-[#344E41]" size={22} />
+      <div>
+        <p className="text-xs text-gray-500">Suburbs Claimed</p>
+        <p className="text-lg font-semibold text-[#344E41]">
+          {claimedCount}
+        </p>
+      </div>
+    </div>
 
-          <ul className="text-gray-600 space-y-2 text-sm">
-            <li>• Early access</li>
-            <li>• Influence community rules</li>
-            <li>• Priority verification badge</li>
-          </ul>
-        </div>
+    {/* Founding Members */}
+    <div className="bg-white border border-[#D4E2C8] rounded-xl p-4 shadow-sm flex items-center gap-3">
+      <Users className="text-[#344E41]" size={22} />
+      <div>
+        <p className="text-xs text-gray-500">Founding Members</p>
+        <p className="text-lg font-semibold text-[#344E41]">
+          {claimedCount}
+        </p>
+      </div>
+    </div>
+
+  </div>
+)}
 
         {/* Form */}
         <div className="bg-white border border-[#A3B18A]/30 p-8 rounded-lg shadow-sm space-y-4">
