@@ -11,7 +11,7 @@ export default function Waitlist() {
   const [success, setSuccess] = useState(false);
   
 
-  const handleSubmit = async () => {
+const handleSubmit = async () => {
   if (!email || !suburb) return;
 
   const { error } = await supabase
@@ -19,19 +19,28 @@ export default function Waitlist() {
     .insert([{ email, suburb }]);
 
   if (!error) {
+
+    // send confirmation email
     await fetch("/api/send-confirmation", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email, suburb }),
     });
-    
-    setSuccess(true);
-    setEmail("");
-    setSuburb("");
+
+    // record suburb growth for leaderboard
+    await fetch("/api/join-suburb", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email,
+        suburb: suburb.toLowerCase().trim(),
+      }),
+    });
+
   } else {
-    console.error("Supabase error:", error);
-    alert(error?.message);
-    
+    console.error(error);
   }
 };
 
