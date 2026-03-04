@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+"use client";
+
 import { useState, useEffect } from "react";
 
 export default function Founding() {
