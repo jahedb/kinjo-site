@@ -136,6 +136,59 @@ export default function Founding() {
 
         </div>
 
+        <div className="space-y-4 text-sm text-[#344E41] leading-relaxed">
+
+  <p>
+    Founding Members help bring Kinjo to their neighbourhood. You'll be the first
+    verified member in your suburb and help establish a trusted local community
+    from day one.
+  </p>
+
+  <p>
+    Instead of chaotic WhatsApp groups and anonymous marketplaces, Kinjo creates
+    a structured space where neighbours can safely connect, buy and sell locally,
+    and share important updates.
+  </p>
+
+  <div className="mt-6 space-y-2">
+
+    <p className="font-semibold text-[#344E41]">
+      As a founding member you receive:
+    </p>
+
+    <ul className="space-y-2 text-[#344E41]">
+
+      <li className="flex gap-2">
+        <span className="text-[#A3B18A]">•</span>
+        Founding member badge in your suburb
+      </li>
+
+      <li className="flex gap-2">
+        <span className="text-[#A3B18A]">•</span>
+        Early access to all Kinjo features
+      </li>
+
+      <li className="flex gap-2">
+        <span className="text-[#A3B18A]">•</span>
+        Influence over community guidelines and moderation
+      </li>
+
+      <li className="flex gap-2">
+        <span className="text-[#A3B18A]">•</span>
+        Ability to invite the first neighbours into your suburb
+      </li>
+
+      <li className="flex gap-2">
+        <span className="text-[#A3B18A]">•</span>
+        Recognition as the founding community leader
+      </li>
+
+    </ul>
+
+  </div>
+
+</div>
+
         {/* RIGHT COLUMN — FORM */}
         <div className="bg-white border border-[#A3B18A]/30 p-8 rounded-lg shadow-sm space-y-4">
 
