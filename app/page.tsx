@@ -6,6 +6,7 @@ import Trust from "./components/sections/Trust";
 import Founding from "./components/sections/Founding";
 import Waitlist from "./components/sections/Waitlist";
 import Communities from "./components/sections/Communities";
+import Roadmap from "./components/sections/Roadmap";
 
 export default function Home() {
   return (
@@ -17,6 +18,7 @@ export default function Home() {
       <Communities />
       <Trust />
       <Founding />
+      <Roadmap />
       <Waitlist />
       
     </>
