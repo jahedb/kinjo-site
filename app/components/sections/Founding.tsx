@@ -103,8 +103,7 @@ return ( <section id="founding" className="scroll-mt-24 py-32 bg-[#F0F4EC] px-6"
       </h2>
 
       <p className="text-base text-[#344E41] mb-8 max-w-md">
-        One founding member is selected per suburb to help launch Kinjo and
-        establish a trusted local community.
+        One founding member is selected per suburb.
       </p>
 
       {claimedCount !== null && (
@@ -143,18 +142,11 @@ return ( <section id="founding" className="scroll-mt-24 py-32 bg-[#F0F4EC] px-6"
       <div className="space-y-5 text-sm text-[#344E41] leading-relaxed max-w-lg">
 
         <p>
-          Founding Members help bring Kinjo to their neighbourhood. You'll
-          be the first verified resident in your suburb and help shape the
+          Founding Members will be the first verified
+          resident in your suburb and help shape the
           foundation of a trusted local network.
         </p>
-
-        <p>
-          Instead of fragmented WhatsApp groups and anonymous marketplaces,
-          Kinjo provides a structured, private space where neighbours can
-          connect, share updates, recommend services, and support each
-          other.
-        </p>
-
+        
         <div className="pt-4">
 
           <p className="font-semibold text-[#344E41] mb-3">
