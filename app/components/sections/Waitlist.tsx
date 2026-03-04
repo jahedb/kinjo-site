@@ -8,20 +8,29 @@ export default function Waitlist() {
   const [suburb, setSuburb] = useState("");
   const [success, setSuccess] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [errorMsg, setErrorMsg] = useState("");
 
   const handleSubmit = async () => {
     if (!email || !suburb || loading) return;
 
     setLoading(true);
+    setErrorMsg("");
 
     try {
-      // insert into waitlist
+
       const { error } = await supabase
         .from("waitlist")
         .insert([{ email, suburb }]);
 
       if (error) {
-        console.error("Supabase insert error:", error);
+
+        // duplicate email
+        if (error.code === "23505") {
+          setErrorMsg("This email is already on the waitlist.");
+        } else {
+          setErrorMsg("Something went wrong. Please try again.");
+        }
+
         setLoading(false);
         return;
       }
@@ -35,7 +44,7 @@ export default function Waitlist() {
         body: JSON.stringify({ email, suburb }),
       });
 
-      // record suburb growth for leaderboard
+      // suburb growth leaderboard
       await fetch("/api/join-suburb", {
         method: "POST",
         headers: {
@@ -52,7 +61,10 @@ export default function Waitlist() {
       setSuburb("");
 
     } catch (err) {
-      console.error("Submission failed:", err);
+
+      console.error(err);
+      setErrorMsg("Submission failed. Please try again.");
+
     }
 
     setLoading(false);
@@ -79,28 +91,14 @@ export default function Waitlist() {
             value={suburb}
             onChange={(e) => setSuburb(e.target.value)}
             placeholder="Your suburb"
-            className="w-full p-3 rounded 
-              bg-[#F0F4EC] 
-              text-[#344E41] 
-              placeholder:text-[#6B7280]
-              border border-[#A3B18A]/40
-              focus:outline-none 
-              focus:ring-2 
-              focus:ring-[#A3B18A]"
+            className="w-full p-3 rounded bg-[#F0F4EC] text-[#344E41] placeholder:text-[#6B7280] border border-[#A3B18A]/40 focus:outline-none focus:ring-2 focus:ring-[#A3B18A]"
           />
 
           <input
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="Email address"
-            className="w-full p-3 rounded 
-              bg-[#F0F4EC] 
-              text-[#344E41] 
-              placeholder:text-[#6B7280]
-              border border-[#A3B18A]/40
-              focus:outline-none 
-              focus:ring-2 
-              focus:ring-[#A3B18A]"
+            className="w-full p-3 rounded bg-[#F0F4EC] text-[#344E41] placeholder:text-[#6B7280] border border-[#A3B18A]/40 focus:outline-none focus:ring-2 focus:ring-[#A3B18A]"
           />
 
           <button
@@ -118,6 +116,12 @@ export default function Waitlist() {
               ? "Joined ✓"
               : "Request Access"}
           </button>
+
+          {errorMsg && (
+            <p className="text-red-300 text-sm mt-2">
+              {errorMsg}
+            </p>
+          )}
 
         </div>
 
