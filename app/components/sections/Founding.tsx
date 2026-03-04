@@ -1,7 +1,5 @@
 "use client";
 
-"use client";
-
 import { useState, useEffect } from "react";
 import { MapPin, Users } from "lucide-react";
 
@@ -9,6 +7,8 @@ export default function Founding() {
   const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [claimedCount, setClaimedCount] = useState<number | null>(null);
+  const [displayCount, setDisplayCount] = useState(0);
+
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -16,6 +16,7 @@ export default function Founding() {
     motivation: "",
   });
 
+  // Fetch claimed suburb count
   useEffect(() => {
     async function fetchCount() {
       const res = await fetch("/api/suburb-count");
@@ -24,7 +25,29 @@ export default function Founding() {
     }
 
     fetchCount();
-  }, []);  
+  }, []);
+
+  // Animate number count
+  useEffect(() => {
+    if (claimedCount === null) return;
+
+    let start = 0;
+    const duration = 800;
+    const increment = claimedCount / (duration / 16);
+
+    const timer = setInterval(() => {
+      start += increment;
+
+      if (start >= claimedCount) {
+        setDisplayCount(claimedCount);
+        clearInterval(timer);
+      } else {
+        setDisplayCount(Math.floor(start));
+      }
+    }, 16);
+
+    return () => clearInterval(timer);
+  }, [claimedCount]);
 
   const handleSubmit = async () => {
     const valid = Object.values(form).every((v) => v.trim());
@@ -41,12 +64,12 @@ export default function Founding() {
         body: JSON.stringify(form),
       });
 
-      const data = await res.json();
-
       if (res.status === 409) {
-        alert("This suburb has already been claimed. You can still join the waitlist.");
+        alert(
+          "This suburb has already been claimed. You can still join the waitlist."
+        );
         return;
-    }
+      }
 
       setSubmitted(true);
 
@@ -56,7 +79,6 @@ export default function Founding() {
         suburb: "",
         motivation: "",
       });
-
     } catch (err) {
       console.error(err);
       alert("Something went wrong.");
@@ -69,48 +91,52 @@ export default function Founding() {
     <section id="founding" className="scroll-mt-24 py-28 bg-[#F0F4EC] px-6">
       <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-16 items-start">
 
-        {/* Copy */}
-        <p className="text-xs tracking-widest uppercase text-[#A3B18A] mb-4">
-          Founding Member
-        </p>
+        {/* LEFT COLUMN */}
+        <div>
 
-        <h2 className="text-4xl font-serif text-[#344E41] mb-6">
-         Claim Kinjo for your suburb
-        </h2>
+          <p className="text-xs tracking-widest uppercase text-[#A3B18A] mb-4">
+            Founding Member
+          </p>
 
-        <p className="text-sm text-[#344E41] mb-6">
-          Only one founding member is selected per suburb.
-        </p>
+          <h2 className="text-4xl font-serif text-[#344E41] mb-6">
+            Claim Kinjo for your suburb
+          </h2>
 
-      {claimedCount !== null && (
-      <div className="grid grid-cols-2 gap-4 mb-6">
+          <p className="text-sm text-[#344E41] mb-6">
+            Only one founding member is selected per suburb.
+          </p>
 
-    {/* Suburbs Claimed */}
-    <div className="bg-white border border-[#D4E2C8] rounded-xl p-4 shadow-sm flex items-center gap-3">
-      <MapPin className="text-[#344E41]" size={22} />
-      <div>
-        <p className="text-xs text-gray-500">Suburbs Claimed</p>
-        <p className="text-lg font-semibold text-[#344E41]">
-          {claimedCount}
-        </p>
-      </div>
-    </div>
+          {claimedCount !== null && (
+            <div className="grid grid-cols-2 gap-4 mb-6">
 
-    {/* Founding Members */}
-    <div className="bg-white border border-[#D4E2C8] rounded-xl p-4 shadow-sm flex items-center gap-3">
-      <Users className="text-[#344E41]" size={22} />
-      <div>
-        <p className="text-xs text-gray-500">Founding Members</p>
-        <p className="text-lg font-semibold text-[#344E41]">
-          {claimedCount}
-        </p>
-      </div>
-    </div>
+              {/* Suburbs Claimed */}
+              <div className="bg-white border border-[#D4E2C8] rounded-xl p-4 shadow-sm flex items-center gap-3">
+                <MapPin className="text-[#344E41]" size={22} />
+                <div>
+                  <p className="text-xs text-gray-500">Suburbs Claimed</p>
+                  <p className="text-lg font-semibold text-[#344E41]">
+                    {displayCount}+
+                  </p>
+                </div>
+              </div>
 
-  </div>
-)}
+              {/* Founding Members */}
+              <div className="bg-white border border-[#D4E2C8] rounded-xl p-4 shadow-sm flex items-center gap-3">
+                <Users className="text-[#344E41]" size={22} />
+                <div>
+                  <p className="text-xs text-gray-500">Founding Members</p>
+                  <p className="text-lg font-semibold text-[#344E41]">
+                    {displayCount}+
+                  </p>
+                </div>
+              </div>
 
-        {/* Form */}
+            </div>
+          )}
+
+        </div>
+
+        {/* RIGHT COLUMN — FORM */}
         <div className="bg-white border border-[#A3B18A]/30 p-8 rounded-lg shadow-sm space-y-4">
 
           <input
@@ -144,7 +170,7 @@ export default function Founding() {
           />
 
           <textarea
-            placeholder="Why do you want to launch Kinjo in your suburb? (e.g. Our neighbourhood relies on messy WhatsApp groups and I’d like to help build a trusted local network.)"
+            placeholder="Why do you want to launch Kinjo in your suburb?"
             disabled={loading || submitted}
             value={form.motivation}
             onChange={(e) =>
@@ -177,7 +203,9 @@ export default function Founding() {
               Thanks — we’ll review your application and contact you soon.
             </p>
           )}
+
         </div>
+
       </div>
     </section>
   );
