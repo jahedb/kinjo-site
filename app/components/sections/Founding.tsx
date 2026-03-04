@@ -1,17 +1,28 @@
 "use client";
 
 import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function Founding() {
   const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
-
+  const [claimedCount, setClaimedCount] = useState<number | null>(null);
   const [form, setForm] = useState({
     name: "",
     email: "",
     suburb: "",
     motivation: "",
   });
+
+  useEffect(() => {
+    async function fetchCount() {
+      const res = await fetch("/api/suburb-count");
+      const data = await res.json();
+      setClaimedCount(data.count);
+    }
+
+    fetchCount();
+  }, []);  
 
   const handleSubmit = async () => {
     const valid = Object.values(form).every((v) => v.trim());
@@ -20,7 +31,7 @@ export default function Founding() {
     try {
       setLoading(true);
 
-      const res = await fetch("/api/founding-member", {
+      const res = await fetch("/api/claim-suburb", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -30,11 +41,10 @@ export default function Founding() {
 
       const data = await res.json();
 
-      if (!res.ok) {
-        console.error(data);
-        alert("Submission failed. Please try again.");
+      if (res.status === 409) {
+        alert("This suburb has already been claimed. You can still join the waitlist.");
         return;
-      }
+    }
 
       setSubmitted(true);
 
@@ -64,8 +74,18 @@ export default function Founding() {
           </p>
 
           <h2 className="text-4xl font-serif text-[#344E41] mb-6">
-            Launch Kinjo in your suburb
+            Claim Kinjo for your suburb
           </h2>
+
+          <p className="text-sm text-[#344E41] mb-4">
+            Only one founding member is selected per suburb.
+          </p>
+
+          {claimedCount !== null && (
+          <p className="text-xs text-[#A3B18A] mb-4">
+          ⚡ {claimedCount} suburbs already claimed
+          </p>
+      )}
 
           <p className="text-gray-600 mb-4">
             Become a founding member and help shape the first trusted
