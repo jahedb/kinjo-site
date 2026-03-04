@@ -35,7 +35,7 @@ export default function Waitlist() {
         body: JSON.stringify({ email, suburb }),
       });
 
-      // record suburb growth
+      // record suburb growth for leaderboard
       await fetch("/api/join-suburb", {
         method: "POST",
         headers: {
@@ -79,13 +79,13 @@ export default function Waitlist() {
             value={suburb}
             onChange={(e) => setSuburb(e.target.value)}
             placeholder="Your suburb"
-            className="w-full p-3 rounded
-              bg-[#F0F4EC]
-              text-[#344E41]
+            className="w-full p-3 rounded 
+              bg-[#F0F4EC] 
+              text-[#344E41] 
               placeholder:text-[#6B7280]
               border border-[#A3B18A]/40
-              focus:outline-none
-              focus:ring-2
+              focus:outline-none 
+              focus:ring-2 
               focus:ring-[#A3B18A]"
           />
 
@@ -93,8 +93,35 @@ export default function Waitlist() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="Email address"
-            className="w-full p-3 rounded
-              bg-[#F0F4EC]
-              text-[#344E41]
+            className="w-full p-3 rounded 
+              bg-[#F0F4EC] 
+              text-[#344E41] 
               placeholder:text-[#6B7280]
               border border-[#A3B18A]/40
+              focus:outline-none 
+              focus:ring-2 
+              focus:ring-[#A3B18A]"
+          />
+
+          <button
+            onClick={handleSubmit}
+            disabled={success || loading}
+            className={`px-6 py-3 rounded-full transition ${
+              success
+                ? "bg-[#A3B18A] text-white cursor-not-allowed"
+                : "bg-[#344E41] text-white hover:bg-[#2c4036]"
+            }`}
+          >
+            {loading
+              ? "Submitting..."
+              : success
+              ? "Joined ✓"
+              : "Request Access"}
+          </button>
+
+        </div>
+
+      </div>
+    </section>
+  );
+}
