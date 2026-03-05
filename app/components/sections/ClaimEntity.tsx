@@ -128,7 +128,7 @@ const formComponent = ( <div className="bg-white p-8 rounded-xl shadow-sm space-
 
   {submitted && (
     <p className="text-green-700 text-sm">
-      Thanks — we'll review your request soon.
+      Thanks — we will review your request soon.
     </p>
   )}
 </div>
