@@ -9,6 +9,7 @@ import Communities from "./components/sections/Communities";
 import Roadmap from "./components/sections/Roadmap";
 import SuburbLeaderboard from "./components/sections/SuburbLeaderboard";
 import ClaimEntity from "./components/sections/ClaimEntity";
+import Security from "./components/sections/Security";
 
 export default function Home() {
   return (
@@ -40,6 +41,7 @@ export default function Home() {
       />
       <Roadmap />
       <Waitlist />
+      <Security />
       
     </>
   );

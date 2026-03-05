@@ -99,7 +99,7 @@ return ( <section id="founding" className="scroll-mt-24 py-32 bg-[#F0F4EC] px-6"
       </p>
 
       <h2 className="text-4xl md:text-5xl font-serif text-[#344E41] mb-6 leading-tight">
-        Claim Kinjo for your suburb
+        Become the Founding Member on Kinjo for your suburb
       </h2>
 
       <p className="text-base text-[#344E41] mb-8 max-w-md">
@@ -258,7 +258,7 @@ return ( <section id="founding" className="scroll-mt-24 py-32 bg-[#F0F4EC] px-6"
 
       {submitted && (
         <p className="text-green-700 text-sm">
-          Thanks — we'll review your application and contact you soon.
+          Thanks — we will review your application and contact you soon.
         </p>
       )}
 

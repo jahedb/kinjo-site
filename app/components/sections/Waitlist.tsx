@@ -78,11 +78,11 @@ export default function Waitlist() {
       <div className="max-w-xl mx-auto">
 
         <h2 className="text-4xl font-serif mb-6">
-          Bring Kinjo to your street.
+          Bring Kinjo to your community.
         </h2>
 
         <p className="text-gray-300 mb-10">
-          Join the waitlist and be notified when your suburb launches.
+          Join the waitlist and be notified when your space launches.
         </p>
 
         <div className="space-y-4">
