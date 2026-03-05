@@ -1,6 +1,6 @@
 export default function Features() {
   const features = [
-    { title: "Invite-Only Access", text: "Every member is verified by someone who lives there." },
+    { title: "Invite-Only Access", text: "Every member is verified by a moderator of the community." },
     { title: "Suburb Scoped", text: "Your content never leaks into another community." },
     { title: "Trust Score", text: "Built from real reviews and transaction history." },
     { title: "Neighbourhood Alerts", text: "Safety updates and real-time notices." },
@@ -20,7 +20,7 @@ export default function Features() {
         </p>
 
         <h2 className="text-4xl md:text-5xl font-serif text-[#344E41] mb-12">
-          Built for real neighbours.
+          Built for real communities.
         </h2>
 
         <div className="grid md:grid-cols-3 gap-6">
