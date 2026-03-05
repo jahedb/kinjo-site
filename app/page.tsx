@@ -10,18 +10,27 @@ import Roadmap from "./components/sections/Roadmap";
 import SuburbLeaderboard from "./components/sections/SuburbLeaderboard";
 import ClaimEntity from "./components/sections/ClaimEntity";
 import Security from "./components/sections/Security";
+import SectionGlow from "./components/ui/SectionGlow";
 
 export default function Home() {
   return (
     <>
       <Hero />
+      <SectionGlow />
       <FeatureShowcase />
+      <SectionGlow />
       <Problem />
+      <SectionGlow />
       <Features />
+      <SectionGlow />
       <Communities />
+      <SectionGlow />
       <Trust />
+      <SectionGlow />
       <SuburbLeaderboard />
+      <SectionGlow />
       <Founding />
+      <SectionGlow />
       <ClaimEntity
         id="claim-club"
         title="Claim your Club"
@@ -31,6 +40,7 @@ export default function Home() {
         background="bg-[#344E41]"
         formLeft
       />
+      <SectionGlow />
       <ClaimEntity
         id="claim-organisation"
         title="Claim your Organisation"
@@ -39,9 +49,13 @@ export default function Home() {
         apiRoute="/api/claim-organisation"
         background="bg-[#F0F4EC]"
       />
+      <SectionGlow />
       <Roadmap />
+      <SectionGlow />
       <Waitlist />
+      <SectionGlow />
       <Security />
+      <SectionGlow />
       
     </>
   );
