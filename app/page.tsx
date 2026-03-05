@@ -8,8 +8,8 @@ import Waitlist from "./components/sections/Waitlist";
 import Communities from "./components/sections/Communities";
 import Roadmap from "./components/sections/Roadmap";
 import SuburbLeaderboard from "./components/sections/SuburbLeaderboard";
-import ClaimClub from "./components/sections/ClaimClub";
-import ClaimOrganisation from "./components/sections/ClaimOrganisation";
+import ClaimClub from "./components/sections/.ClaimClub";
+import ClaimOrganisation from "./components/sections/.ClaimOrganisation";
 import ClaimEntity from "./components/sections/ClaimEntity";
 
 export default function Home() {
