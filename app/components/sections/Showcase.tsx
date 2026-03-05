@@ -3,7 +3,7 @@
 export default function Showcase() {
   const slides = [
     {
-      title: "Neighbourhood Marketplace",
+      title: "Community Marketplace",
       desc: "Buy and sell safely within your suburb.",
       image: "/mock-1.png",
     },
@@ -13,7 +13,7 @@ export default function Showcase() {
       image: "/mock-2.png",
     },
     {
-      title: "Neighbourhood Alerts",
+      title: "Community Alerts",
       desc: "Real-time safety notifications.",
       image: "/mock-3.png",
     },

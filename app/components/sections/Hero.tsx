@@ -8,12 +8,12 @@ export default function Hero() {
         {/* LEFT */}
         <div>
           <h1 className="text-4xl md:text-[3.25rem] font-light tracking-tight text-[#344E41] leading-[1.1] mb-8">
-            A private community for your neighbourhood.
+            A private space for your community.
           </h1>
 
           <p className="text-lg text-[#6B7280] mb-6 max-w-xl">
-            Kinjo is an invite-only neighbourhood app that connects verified
-            neighbours within the same suburb.
+            Kinjo is an invite-only community app that connects verified
+            members within the same community.
           </p>
 
           <p className="text-lg text-[#6B7280] mb-10 max-w-xl">

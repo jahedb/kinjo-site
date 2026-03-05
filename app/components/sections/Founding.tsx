@@ -172,7 +172,7 @@ return ( <section id="founding" className="scroll-mt-24 py-32 bg-[#F0F4EC] px-6"
 
             <li className="flex gap-3">
               <span className="text-[#A3B18A] font-bold">✓</span>
-              Ability to invite the first neighbours
+              Ability to invite the first members
             </li>
 
             <li className="flex gap-3">

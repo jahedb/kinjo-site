@@ -5,8 +5,8 @@ import Image from "next/image";
 
 const cards = [
   {
-    title: "Neighbourhood Marketplace",
-    desc: "Buy and sell safely within your suburb.",
+    title: "Community Marketplace",
+    desc: "Buy and sell safely within your community.",
     image: "/mock-1.png",
   },
   {
@@ -15,7 +15,7 @@ const cards = [
     image: "/mock-2.png",
   },
   {
-    title: "Neighbourhood Alerts",
+    title: "Community Alerts",
     desc: "Real-time safety notifications.",
     image: "/mock-3.png",
   },
@@ -41,7 +41,7 @@ export default function FeatureShowcase() {
     <section className="relative py-32 bg-white overflow-hidden">
       <div className="max-w-6xl mx-auto px-6 text-center mb-16">
         <h2 className="text-4xl font-semibold text-[#344E41] mb-4">
-          Built for real neighbourhoods
+          Built for real communities
         </h2>
         <p className="text-[#6B7280] max-w-xl mx-auto">
           Structured. Private. Invite-only.
