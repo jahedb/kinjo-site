@@ -32,13 +32,13 @@ export default function Home() {
       <Founding />
       <SectionGlow />
       <ClaimEntity
-        id="claim-club"
-        title="Claim your Club"
-        label="Club Founder"
-        entityName="Club"
-        apiRoute="/api/claim-club"
-        background="bg-[#344E41]"
-        formLeft
+          id="claim-club"
+          title="Claim your club"
+          label="Club Founding"
+          entityName="Club"
+          apiRoute="/api/claim-suburb"
+          background="bg-white"
+          formLeft
       />
       <SectionGlow />
       <ClaimEntity
@@ -46,7 +46,7 @@ export default function Home() {
         title="Claim your Organisation"
         label="Organisation Leader"
         entityName="Organisation"
-        apiRoute="/api/claim-organisation"
+        apiRoute="/api/claim-suburb"
         background="bg-[#F0F4EC]"
       />
       <SectionGlow />

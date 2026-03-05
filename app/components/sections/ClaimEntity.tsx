@@ -35,8 +35,10 @@ motivation: "",
 
 const handleSubmit = async () => {
 
+
 const valid = Object.values(form).every((v) => v.trim());
 if (!valid || loading) return;
+
 try {
 
   setLoading(true);
@@ -46,7 +48,17 @@ try {
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(form),
+
+    body: JSON.stringify({
+      name: form.name,
+      email: form.email,
+      entity: form.entity,
+      motivation: form.motivation,
+
+      // This is the important new field
+      space_type: entityName.toLowerCase(),
+    }),
+
   });
 
   setSubmitted(true);
@@ -69,13 +81,15 @@ try {
 
 }
 
+
 };
 
 const formComponent = (
 
+
 <div className="relative group">
 
-  {/* subtle glow behind card */}
+  {/* glow */}
   <div className="absolute inset-0 bg-[#A3B18A]/10 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition duration-500"></div>
 
   <div className="relative bg-white border border-[#A3B18A]/30 p-8 rounded-xl shadow-md transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 space-y-4">
@@ -147,12 +161,15 @@ const formComponent = (
   </div>
 
 </div>
+
+
 );
 
 const isDark = background.includes("#344E41");
 
 const contentComponent = (
 <div className={isDark ? "text-white" : "text-[#344E41]"}>
+
 
   <p className="text-xs tracking-widest uppercase text-[#A3B18A] mb-4">
     {entityName}
@@ -217,5 +234,7 @@ className={`scroll-mt-24 py-32 px-6 ${background}`}
 
   </div>
 </section>
+
+
 );
 }

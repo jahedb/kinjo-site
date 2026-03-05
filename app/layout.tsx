@@ -103,7 +103,9 @@ url: "https://kinjo.co.za",
 },
 };
 
-return ( <html lang="en"> <body className={inter.className}>
+return (
+  <html lang="en">
+    <body className={inter.className}>
 
 
     {/* Structured Data for SEO + AI */}
